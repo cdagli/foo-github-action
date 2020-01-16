@@ -17,8 +17,9 @@ const main = async () => {
     const payload = JSON.stringify(github.context.payload, undefined, 2);
     console.log(`The event payload: ${payload}`);
 
+    const workspace = process.env.GITHUB_WORKSPACE;
     const project = await readJSON(
-      path.join(this.config.get("workspace"), "package.json")
+      path.join(workspace, "package.json")
     );
     console.log(project);
   } catch (error) {
