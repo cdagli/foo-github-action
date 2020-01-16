@@ -47,18 +47,30 @@ const main = async () => {
     //   console.log('FILE')
     //   console.log(file);
     // });
-    const project = await readJSON(
-      path.join(workspace, "package.json")
-    );
+    const project = await readJSON(path.join(workspace, "package.json"));
     console.log(project.dependencies);
+
+    const approved = await readJSON(path.join(workspace, "approved.json"));
+    const result = true;
+    Object.keys(project.dependencies).forEach(dependency => {
+      if (!approved[dependency]) {
+        console.log(`${dependency} is not approved`);
+        result = false;
+      }
+    });
+
+    console.log(result)
+
   } catch (error) {
     core.setFailed(error.message);
   }
 };
 
-main().then(() => {
-  process.exit(1);
-}).catch(error => {
-  console.error(error);
-  process.exit(1);
-});
+main()
+  .then(() => {
+    process.exit(1);
+  })
+  .catch(error => {
+    console.error(error);
+    process.exit(1);
+  });
