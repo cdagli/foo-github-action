@@ -20,7 +20,7 @@ const main = async () => {
     const workspace = process.env.GITHUB_WORKSPACE;
     console.log(workspace)
     const project = await readJSON(
-      path.join(".", "package.json")
+      path.join(workspace, "package.json")
     );
     console.log(project);
   } catch (error) {
