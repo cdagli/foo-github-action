@@ -41,7 +41,7 @@ const main = async () => {
     // const payload = JSON.stringify(github.context.payload, undefined, 2);
     // console.log(`The event payload: ${payload}`);
 
-    // const workspace = process.env.GITHUB_WORKSPACE;
+    const workspace = process.env.GITHUB_WORKSPACE;
     // console.log(workspace)
     // fs.readdirSync(workspace).forEach(file => {
     //   console.log('FILE')
