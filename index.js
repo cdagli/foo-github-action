@@ -27,7 +27,8 @@ const main = async () => {
     await exec.exec("pwd");
     console.log('FooOutput: ', myOutput);
     console.log('FooError:' ,myError);
-
+    await exec.exec("ls");
+    await exec.exec("git branch");
     await exec.exec("git diff");
     console.log('FooOutput: ', myOutput);
     console.log('FooError:' ,myError);
