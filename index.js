@@ -1,9 +1,9 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
-import { promisify} from 'util';
-import readPackageJSON from 'read-package-json';
+const util = require('util');
+const readPackageJSON = require('read-package-json');
 
-const readJSON = promisify(readPackageJSON); 
+const readJSON = util.promisify(readPackageJSON); 
 
 const main = async () => {
   try {
