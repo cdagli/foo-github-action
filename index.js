@@ -21,6 +21,7 @@ const main = async () => {
     const workspace = process.env.GITHUB_WORKSPACE;
     console.log(workspace)
     fs.readdirSync(workspace).forEach(file => {
+      console.log('FILE')
       console.log(file);
     });
     const project = await readJSON(
