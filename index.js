@@ -24,10 +24,10 @@ const main = async () => {
       console.log('FILE')
       console.log(file);
     });
-    const project = await readJSON(
-      path.join(workspace, "package.json")
-    );
-    console.log(project);
+    // const project = await readJSON(
+    //   path.join(workspace, "package.json")
+    // );
+    // console.log(project);
   } catch (error) {
     core.setFailed(error.message);
   }
