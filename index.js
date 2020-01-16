@@ -3,6 +3,7 @@ const github = require("@actions/github");
 const util = require('util');
 const path = require('path');
 const readPackageJSON = require('read-package-json');
+const fs = require('fs');
 
 const readJSON = util.promisify(readPackageJSON); 
 
@@ -19,6 +20,9 @@ const main = async () => {
 
     const workspace = process.env.GITHUB_WORKSPACE;
     console.log(workspace)
+    fs.readdirSync(workspace).forEach(file => {
+      console.log(file);
+    });
     const project = await readJSON(
       path.join(workspace, "package.json")
     );
