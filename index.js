@@ -24,14 +24,14 @@ const readJSON = util.promisify(readPackageJSON);
 
 const main = async () => {
   try {
-    await exec.exec("pwd");
-    console.log('FooOutput: ', myOutput);
-    console.log('FooError:' ,myError);
-    await exec.exec("ls");
-    await exec.exec("git branch");
-    await exec.exec("git diff");
-    console.log('FooOutput: ', myOutput);
-    console.log('FooError:' ,myError);
+    // await exec.exec("pwd");
+    // console.log('FooOutput: ', myOutput);
+    // console.log('FooError:' ,myError);
+    // await exec.exec("ls");
+    // await exec.exec("git branch");
+    // await exec.exec("git diff");
+    // console.log('FooOutput: ', myOutput);
+    // console.log('FooError:' ,myError);
     // `who-to-greet` input defined in action metadata file
     // const nameToGreet = core.getInput("who-to-greet");
     // console.log(`Hello ${nameToGreet}!`);
@@ -47,10 +47,10 @@ const main = async () => {
     //   console.log('FILE')
     //   console.log(file);
     // });
-    // const project = await readJSON(
-    //   path.join(workspace, "package.json")
-    // );
-    // console.log(project);
+    const project = await readJSON(
+      path.join(workspace, "package.json")
+    );
+    console.log(project);
   } catch (error) {
     core.setFailed(error.message);
   }
