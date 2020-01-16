@@ -28,7 +28,7 @@ const main = async () => {
     console.log('FooOutput: ', myOutput);
     console.log('FooError:' ,myError);
 
-    await exec.exec("ls");
+    await exec.exec("git diff");
     console.log('FooOutput: ', myOutput);
     console.log('FooError:' ,myError);
     // `who-to-greet` input defined in action metadata file
@@ -57,5 +57,7 @@ const main = async () => {
 
 main().catch(error => {
   console.error(error);
-  process.exit(1);
+;
 });
+
+process.exit(1)
