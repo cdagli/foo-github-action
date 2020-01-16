@@ -1,6 +1,7 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
 const util = require('util');
+const path = require('path');
 const readPackageJSON = require('read-package-json');
 
 const readJSON = util.promisify(readPackageJSON); 
