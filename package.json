@@ -19,6 +19,7 @@
   "homepage": "https://github.com/cdagli/foo-github-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.1",
-    "@actions/github": "^2.0.1"
+    "@actions/github": "^2.0.1",
+    "read-package-json": "2.1.1"
   }
 }

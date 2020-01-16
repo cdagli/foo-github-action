@@ -1,5 +1,9 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
+import { promisify} from 'util';
+import readPackageJSON from 'read-package-json';
+
+const readJSON = promisify(readPackageJSON); 
 
 const main = async () => {
   try {
@@ -12,7 +16,7 @@ const main = async () => {
     const payload = JSON.stringify(github.context.payload, undefined, 2);
     console.log(`The event payload: ${payload}`);
 
-    const project = await readJson(
+    const project = await readJSON(
       path.join(this.config.get("workspace"), "package.json")
     );
     console.log(project);
