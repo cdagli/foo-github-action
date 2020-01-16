@@ -50,7 +50,7 @@ const main = async () => {
     const project = await readJSON(
       path.join(workspace, "package.json")
     );
-    console.log(project);
+    console.log(project.dependencies);
   } catch (error) {
     core.setFailed(error.message);
   }
