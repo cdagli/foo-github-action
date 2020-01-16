@@ -10,6 +10,9 @@ try {
   // Get the JSON webhook payload for the event that triggered the workflow
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);
+
+  const project = await readJson(path.join(this.config.get("workspace"), "package.json"));
+  console.log(project)
 } catch (error) {
   core.setFailed(error.message);
 }
