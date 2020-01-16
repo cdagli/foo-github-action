@@ -24,7 +24,7 @@ const readJSON = util.promisify(readPackageJSON);
 
 const main = async () => {
   try {
-    await exec.exec("ls");
+    await exec.exec("pwd");
     console.log(myOutput);
     console.log(myError);
     // `who-to-greet` input defined in action metadata file
