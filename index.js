@@ -25,11 +25,10 @@ const main = async () => {
           status: "FAILED"
         });
         result = false;
-      }
-      else if (
+      } else if (
         compareVersions(
-          approved[dependency].version,
-          project.dependencies[dependency]
+          project.dependencies[dependency],
+          approved[dependency].version
         ) === -1
       ) {
         productApprovalResults.push({
@@ -38,6 +37,7 @@ const main = async () => {
           approvedVersion: approved[dependency].version,
           status: "FAILED"
         });
+        result = false;
       } else {
         productApprovalResults.push({
           name: dependency,
