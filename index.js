@@ -17,7 +17,6 @@ const main = async () => {
     const productApprovalResults = [];
 
     Object.keys(project.dependencies).forEach((dependency, index) => {
-      console.log(approved[dependency])
       if (!approved[dependency]) {
         productApprovalResults.push({
           name: dependency,
