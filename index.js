@@ -26,7 +26,7 @@ const main = async () => {
         });
         result = false;
       }
-      if (
+      else if (
         compareVersions(
           approved[dependency].version,
           project.dependencies[dependency]
