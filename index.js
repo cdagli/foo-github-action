@@ -18,9 +18,11 @@ const main = async () => {
 
     Object.keys(project.dependencies).forEach((dependency, index) => {
       if (
-        !approved[
-          dependency
-        ] /*|| compareVersions(approved[dependency], project.dependencies[dependency]) === -1 */
+        !approved[dependency] ||
+        compareVersions(
+          approved[dependency],
+          project.dependencies[dependency]
+        ) === -1
       ) {
         productApprovalResults.push({
           name: dependency,
@@ -42,7 +44,7 @@ const main = async () => {
     console.table(productApprovalResults);
 
     if (!result) {
-      core.setFailed('Dependency check failed!');
+      core.setFailed("Dependency check failed!");
     }
 
     console.log("Dependency check passed!");
@@ -55,9 +57,3 @@ main().catch(error => {
   console.error(error);
   process.exit(1);
 });
-
-/*
-- Success
-- Not approved
-- Not approved version 
-*/
