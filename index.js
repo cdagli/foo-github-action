@@ -30,7 +30,7 @@ const main = async () => {
       productApprovalResults.push({
         name: dependency,
         version: project.dependencies[dependency],
-        approvedVersion: approved[dependency],
+        approvedVersion: approved[dependency].version,
         status: 'SUCCESS'
       })
     });
