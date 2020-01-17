@@ -42,7 +42,7 @@ const main = async () => {
     console.table(productApprovalResults);
 
     if (!result) {
-      throw new Error("Dependency check failed!");
+      core.setFailed('Dependency check failed!');
     }
 
     console.log("Dependency check passed!");
