@@ -17,8 +17,16 @@ const main = async () => {
     const productApprovalResults = [];
 
     Object.keys(project.dependencies).forEach((dependency, index) => {
+      if (!approved[dependency]) {
+        productApprovalResults.push({
+          name: dependency,
+          version: project.dependencies[dependency],
+          approvedVersion: "-",
+          status: "FAILED"
+        });
+        result = false;
+      }
       if (
-        !approved[dependency] ||
         compareVersions(
           approved[dependency],
           project.dependencies[dependency]
@@ -27,10 +35,9 @@ const main = async () => {
         productApprovalResults.push({
           name: dependency,
           version: project.dependencies[dependency],
-          approvedVersion: "-",
+          approvedVersion: approved[dependency].version,
           status: "FAILED"
         });
-        result = false;
       } else {
         productApprovalResults.push({
           name: dependency,
