@@ -17,7 +17,7 @@ const main = async () => {
     const productApprovalResults = [];
 
     Object.keys(project.dependencies).forEach((dependency, index) => {
-      if (!approved[dependency] || compareVersions(approved[dependency], project.dependencies[index]) === -1 ) {
+      if (!approved[dependency] /*|| compareVersions(approved[dependency], project.dependencies[index]) === -1 */) {
         productApprovalResults.push({
           name: dependency,
           version: project.dependencies[index],
