@@ -1,5 +1,4 @@
 const core = require("@actions/core");
-const github = require("@actions/github");
 const util = require("util");
 const path = require("path");
 const readPackageJSON = require("read-package-json");
@@ -14,7 +13,7 @@ const main = async () => {
 
     const approved = await readJSON(path.join(workspace, "approved.json"));
 
-    const result = true;
+    let result = true;
     const productApprovalResults = [];
 
     Object.keys(project.dependencies).forEach((dependency, index) => {
@@ -43,7 +42,6 @@ const main = async () => {
     }
 
     console.log('Dependency check passed!')
-
   } catch (error) {
     core.setFailed(error.message);
   }
