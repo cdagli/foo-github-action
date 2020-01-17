@@ -28,7 +28,7 @@ const main = async () => {
       }
       if (
         compareVersions(
-          approved[dependency],
+          approved[dependency].version,
           project.dependencies[dependency]
         ) === -1
       ) {
