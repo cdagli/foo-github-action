@@ -2,7 +2,7 @@ const core = require("@actions/core");
 const util = require("util");
 const path = require("path");
 const readPackageJSON = require("read-package-json");
-const compareVersions = require('compare-versions');
+const compareVersions = require("compare-versions");
 
 const readJSON = util.promisify(readPackageJSON);
 
@@ -17,42 +17,44 @@ const main = async () => {
     const productApprovalResults = [];
 
     Object.keys(project.dependencies).forEach((dependency, index) => {
-      if (!approved[dependency] /*|| compareVersions(approved[dependency], project.dependencies[dependency]) === -1 */) {
+      if (
+        !approved[
+          dependency
+        ] /*|| compareVersions(approved[dependency], project.dependencies[dependency]) === -1 */
+      ) {
         productApprovalResults.push({
           name: dependency,
           version: project.dependencies[dependency],
-          approvedVersion: '-',
-          status: 'FAILED'
-        })
+          approvedVersion: "-",
+          status: "FAILED"
+        });
         result = false;
+      } else {
+        productApprovalResults.push({
+          name: dependency,
+          version: project.dependencies[dependency],
+          approvedVersion: approved[dependency].version,
+          status: "SUCCESS"
+        });
       }
-
-      productApprovalResults.push({
-        name: dependency,
-        version: project.dependencies[dependency],
-        approvedVersion: approved[dependency].version,
-        status: 'SUCCESS'
-      })
     });
 
     console.table(productApprovalResults);
 
-    if(!result) {
-      throw new Error('Dependency check failed!');
+    if (!result) {
+      throw new Error("Dependency check failed!");
     }
 
-    console.log('Dependency check passed!')
+    console.log("Dependency check passed!");
   } catch (error) {
     core.setFailed(error.message);
   }
 };
 
-main()
-  .catch(error => {
-    console.error(error);
-    process.exit(1);
-  });
-
+main().catch(error => {
+  console.error(error);
+  process.exit(1);
+});
 
 /*
 - Success
